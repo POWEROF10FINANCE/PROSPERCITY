@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: #f0fdf4; /* Very light green */
+  --primary-color: #22c55e; /* Green-500 */
+  --primary-hover: #16a34a; /* Green-600 */
+  --secondary-color: #fbbf24; /* Amber-400 */
+  --text-main: #166534; /* Green-800 */
+  --card-bg: #ffffff;
+  --font-friendly: 'Nunito', sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-friendly);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Fredoka', sans-serif;
+}
+
+#root {
+  width: 100%;
+}
+
+@layer components {
+  .btn-playful {
+    @apply px-6 py-3 rounded-2xl font-black text-white transition-all shadow-md active:scale-95;
+    background-color: var(--primary-color);
+  }
+  .btn-playful:hover {
+    background-color: var(--primary-hover);
+    @apply shadow-lg -translate-y-1;
+  }
+  
+  .card-playful {
+    @apply bg-white rounded-[2rem] p-6 border-b-8 border-r-8 border-gray-100 shadow-xl;
+  }
+
+  .nav-item {
+    @apply flex flex-col items-center justify-center p-2 rounded-2xl transition-all gap-1;
+  }
+  .nav-item.active {
+    @apply bg-green-100 text-green-700 font-bold;
+  }
+}
+
+/* Animations */
+@keyframes pop-in {
+  0% { transform: scale(0.9); opacity: 0; }
+  70% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-pop-in {
+  animation: pop-in 0.4s ease-out forwards;
+}
+
+@keyframes slide-up {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out forwards;
+}
+
+@keyframes pulse-soft {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* Page Transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.page-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 300ms, transform 300ms;
+}

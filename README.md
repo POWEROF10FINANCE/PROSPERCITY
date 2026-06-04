@@ -1,1 +1,1 @@
-# PROSPERCITY
+# PROSPERCITY\n\nFinancial wellness platform.
